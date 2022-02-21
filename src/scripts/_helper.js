@@ -31,9 +31,26 @@ function drawGrid(level) {
   return grid;
 }
 
+// drawing actors by drawActors
+function drawActors(actors) {
+  return elt(
+    "div",
+    { class: "actors" },
+    ...actors.map((actor) => {
+      const rect = elt("div", { class: `actor ${actor.type}` });
+      rect.style.width = `${actor.size.x * scale}px`;
+      rect.style.height = `${actor.size.y * scale}px`;
+      rect.style.top = `${actor.pos.y * scale}px`;
+      rect.style.left = `${actor.pos.x * scale}px`;
+      return rect;
+    })
+  );
+}
+
 const helper = {
   elt,
-  drawGrid
+  drawGrid,
+  drawActors
 };
 
 export default helper;

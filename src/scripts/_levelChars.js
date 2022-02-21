@@ -11,9 +11,9 @@ const levelChars = {
   "+": "lava",
   "=": Lava,
   "|": Lava,
-  v: Lava,
+  "v": Lava,
   "#": "wall",
   "@": Player,
-  o: Coin,
+  "o": Coin,
 };
 export default levelChars;
