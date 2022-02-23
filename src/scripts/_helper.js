@@ -50,7 +50,8 @@ function drawActors(actors) {
 const helper = {
   elt,
   drawGrid,
-  drawActors
+  drawActors, 
+  scale
 };
 
 export default helper;
