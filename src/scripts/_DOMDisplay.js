@@ -14,11 +14,12 @@ class DOMDisplay {
 }
 DOMDisplay.prototype.syncState = function (newState) {
   if (this.actorLayer) this.actorLayer.remove();
-  this.actorLayer = drawActors(state.actors);
+  this.actorLayer = drawActors(newState.actors);
   this.dom.appendChild(this.actorLayer);
-  this.dom.className = `game ${state.status}`;
-  this.scrollPlayerIntoView(state);
+  this.dom.className = `game ${newState.status}`;
+  this.scrollPlayerIntoView(newState);
 };
+
 DOMDisplay.prototype.scrollPlayerIntoView = function (newState) {
   const { width, height } =
     this.dom.getBoundingClientRect(); /** get width and height of dom */
