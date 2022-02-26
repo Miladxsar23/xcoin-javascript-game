@@ -26,15 +26,15 @@
 }
 /* status of game styles */
 .lost .player {
-    background-color : rgb(160, 64, 64);
+  background-color: rgb(160, 64, 64);
 }
 .win .player {
-    box-shadow: -4px -7px 8px white, 4px -7px 8px white;
+  box-shadow: -4px -7px 8px white, 4px -7px 8px white;
 }
 /* game layer */
 .game {
   overflow: hidden;
-  max-width : 600px;
-  max-height : 450px;
-  position : relative;
+  max-width: 600px;
+  max-height: 450px;
+  position: relative;
 }
