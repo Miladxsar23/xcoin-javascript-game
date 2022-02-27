@@ -7,7 +7,7 @@
  *          | _ _ _ lost
  *          | _ _ _ win
  */
-
+import { overlap } from "./_helper";
 class State {
   constructor(level, actors, status) {
     this.level = level;
@@ -27,7 +27,7 @@ State.prototype.update = function (time, keys) {
     return actor.update(time, this, keys);
   });
   let newState = new State(this.level, actors, this.status);
-  if (newState.status === "playing") return newState;
+  if (newState.status !== "playing") return newState;
   const player = newState.player;
   if (this.level.touches(player.pos, player.size, "lava"))
     return new State(this.level, actors, "lost");

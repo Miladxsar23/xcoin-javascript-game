@@ -2,6 +2,7 @@
  * 3 type of Lava base on character type in constructor
  */
 
+import State from "./_state";
 import Vec from "./_vec";
 
 class Lava {
@@ -27,6 +28,10 @@ class Lava {
     return "lava";
   }
 }
+// collide player with lava
+Lava.prototype.collide = function (state) {
+  return new State(state.level, state.actors, "lost");
+};
 
 Lava.prototype.size = new Vec(1, 1);
 

@@ -2,6 +2,7 @@
  * coin actors
  */
 
+import State from "./_state";
 import Vec from "./_vec";
 
 class Coin {
@@ -22,5 +23,12 @@ class Coin {
     return "coin";
   }
 }
+//collide player with coin
+Coin.prototype.collide = function (state) {
+  let actors = state.actors.filter((actor) => actor === this);
+  if (!actors.some((actor) => actor.type == "coin"))
+    return new State(state.level, actors, "won");
+  return new State(state.level, actors, state.status);
+};
 Coin.prototype.size = new Vec(0.6, 0.6);
-export default Coin
+export default Coin;
