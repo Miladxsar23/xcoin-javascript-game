@@ -37,20 +37,19 @@ class Level {
     });
   }
 }
-// touches method checker
+//touches checker
 Level.prototype.touches = function (pos, size, type) {
-  let yStart = Math.floor(pos.y);
-  let xStart = Math.floor(pos.x);
-  let yEnd = Math.ceil(pos.y + size.y);
-  let xEnd = Math.ceil(pos.x + size.x);
-
+  const yStart = Math.floor(pos.y);
+  const yEnd = Math.ceil(pos.y + size.y);
+  const xStart = Math.floor(pos.x);
+  const xEnd = Math.ceil(pos.x + size.x);
   for (let y = yStart; y < yEnd; y++) {
     for (let x = xStart; x < xEnd; x++) {
-      const isOutside = x < 0 || x > this.width || y < 0 || y > this.height;
+      const isOutside = y < 0 || y > this.height || x < 0 || x > this.width;
       const here = isOutside ? "wall" : this.rows[y][x];
       if (here === type) return true;
     }
-    return false;
   }
+  return false;
 };
 export default Level;
