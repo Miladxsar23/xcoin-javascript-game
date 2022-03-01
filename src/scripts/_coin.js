@@ -25,10 +25,10 @@ class Coin {
 }
 //collide player with coin
 Coin.prototype.collide = function (state) {
-  let actors = state.actors.filter((actor) => actor === this);
-  if (!actors.some((actor) => actor.type == "coin"))
-    return new State(state.level, actors, "won");
-  return new State(state.level, actors, state.status);
+  let newActors = state.actors.filter((actor) => actor !== this);
+  const status = state.status;
+  if (!newActors.some((actor) => actor.type === "coin")) status = "won";
+  return new State(state.level, newActors, status);
 };
 Coin.prototype.size = new Vec(0.6, 0.6);
 export default Coin;
