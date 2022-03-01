@@ -3,7 +3,9 @@
  */
 
 import Vec from "./_vec";
-
+const playerXSpeed = 7;
+const gravity = 30;
+const jumpSpeed = 17;
 class Player {
   constructor(pos, speed) {
     this.pos = pos;
@@ -21,5 +23,6 @@ class Player {
     );
   }
 }
+
 Player.prototype.size = new Vec(0.8, 1.5);
 export default Player;
