@@ -23,6 +23,34 @@ class Player {
     );
   }
 }
-
+Player.prototype.update = function (time, state, keys) {
+  let xSpeed = 0;
+  /**base on left and right arrow xSpeed hanges direction and is set */
+  if (keys.ArrowLeft) xSpeed -= playerXSpeed;
+  if (keys.ArrowRight) xSpeed += playerXSpeed;
+  let pos = this.pos;
+  let movedX = pos.plus(
+    new Vec(xSpeed * time, 0)
+  ); /**It just has to move on the x-axis */
+  if (!state.level.touches(movedX, this.size, "wall")) {
+    pos = movedX;
+  }
+  let ySpeed =
+    this.speed.y + time * gravity; /** The initial velocity that decreases
+    over time due to the effect of gravity
+    v = v. + gt */
+  let movedY = pos.plus(
+    new Vec(0, ySpeed * time)
+  ); /**New position in each time frame 
+      y = y. + vt*/
+  if (!state.level.touches(movedY, this.size, "wall")) {
+    pos = movedY;
+  } else if (keys.ArrowUp && ySpeed > 0) {
+    ySpeed = -jumpSpeed;
+  } else {
+    ySpeed = 0;
+  }
+  return new Player(pos, new Vec(xSpeed, ySpeed));
+};
 Player.prototype.size = new Vec(0.8, 1.5);
 export default Player;
