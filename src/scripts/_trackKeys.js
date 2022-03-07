@@ -1,7 +1,7 @@
 /**
  * track keys event
  */
-const arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp"];
+const arrowKeys = trankKeys(["ArrowLeft", "ArrowRight", "ArrowUp"]);
 
 /**
  * @param {arrowKeys} keys
@@ -21,4 +21,4 @@ function trankKeys(keys) {
   return down;
 }
 
-export default trankKeys;
+export default arrowKeys;

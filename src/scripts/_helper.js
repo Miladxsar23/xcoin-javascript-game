@@ -10,27 +10,23 @@ function elt(type, attrs, ...children) {
   return elm;
 }
 //wdrawing static layer of game by drawGrid
-const scale = 20;
+let scale = 20;
 function drawGrid(level) {
-  const grid = elt(
+  return elt(
     "table",
     {
       class: "background",
-      style: `width : ${scale * level.width}px; height`,
+      style: `width: ${level.width * scale}px`,
     },
-    ...level.rows.map((row) => {
-      return elt(
+    ...level.rows.map((row) =>
+      elt(
         "tr",
-        { style: `height : ${scale}px;` },
-        ...row.map((type) => {
-          return elt("td", { class: type });
-        })
-      );
-    })
+        { style: `height: ${scale}px` },
+        ...row.map((type) => elt("td", { class: type }))
+      )
+    )
   );
-  return grid;
 }
-
 // drawing actors by drawActors
 function drawActors(actors) {
   return elt(
@@ -55,12 +51,5 @@ function overlap(actor1, actor2) {
     actor1.pos.y < actor2.pos.y + actor2.size.y
   );
 }
-const helper = {
-  elt,
-  drawGrid,
-  drawActors,
-  scale,
-  overlap,
-};
 
-export default helper;
+export { elt, drawGrid, drawActors, scale, overlap };

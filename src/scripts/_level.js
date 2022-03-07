@@ -1,4 +1,5 @@
 import levelChars from "./_levelchars";
+import Vec from "./_vec";
 /*
  * '.' -> space
  * '#' -> wall
@@ -16,12 +17,12 @@ import levelChars from "./_levelchars";
 // create level class
 class Level {
   constructor(plan) {
-    let row = plan
+    let rows = plan
       .trim()
       .split("\n")
       .map((l) => [...l]);
-    this.width = row[0].length;
-    this.height = row.length;
+    this.width = rows[0].length;
+    this.height = rows.length;
     this.startActors = [];
     this.rows = rows.map((row, y) => {
       return row.map((ch, x) => {
