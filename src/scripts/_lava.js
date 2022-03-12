@@ -30,7 +30,7 @@ class Lava {
 }
 // collide player with lava
 Lava.prototype.collide = function (state) {
-  return new State(state.level, state.actors, "lost");
+  return new State(state.level, state.actors, "lost", state.heart--);
 };
 
 Lava.prototype.update = function (time, state) {

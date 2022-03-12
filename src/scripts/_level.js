@@ -46,9 +46,9 @@ Level.prototype.touches = function (pos, size, type) {
   const xEnd = Math.ceil(pos.x + size.x);
   for (let y = yStart; y < yEnd; y++) {
     for (let x = xStart; x < xEnd; x++) {
-      const isOutside = y < 0 || y > this.height || x < 0 || x > this.width;
+      const isOutside = y < 0 || y >= this.height || x < 0 || x >= this.width;
       const here = isOutside ? "wall" : this.rows[y][x];
-      if (here === type) return true;
+      if (here == type) return true;
     }
   }
   return false;

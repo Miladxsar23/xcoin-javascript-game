@@ -38,3 +38,11 @@
   max-height: 450px;
   position: relative;
 }
+/* container */
+div#root {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
