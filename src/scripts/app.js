@@ -4,7 +4,7 @@
 import GAME_LEVELS from "./_GAME_LEVELS";
 import runLevel from "./_runLevel";
 import Level from "./_level";
-import '../styles/app.css'
+import '../styles/app.css';
 async function runGame(plan) {
   let lives = 3;
   for (let level = 0; level < plan.length && lives > 0; ) {
