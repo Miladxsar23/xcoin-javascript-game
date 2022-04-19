@@ -4,16 +4,26 @@
 import DOMDisplay from "./_DOMDisplay";
 import runAnimation from "./_runAnimation";
 import State from "./_state";
-import arrowKeys from "./_trackKeys";
+import trackKeys from "./_trackKeys";
 function runLevel(level) {
-  const mountPoint = document.querySelector("#root")
+  const mountPoint = document.querySelector("#root");
   let display = new DOMDisplay(mountPoint, level);
   let state = State.start(level);
   let ending = 1;
   return new Promise((resolve, reject) => {
+    function trackEsc(evt) {
+      if (evt.key === "Escape") {
+        arrowKeys["Escape"] = !arrowKeys["Escape"];
+        evt.preventDefault();
+      }
+    }
+    const arrowKeys = trackKeys(["ArrowUp", "ArrowLeft", "ArrowRight"]);
+    window.addEventListener("keydown", trackEsc);
     runAnimation((time) => {
-      state = state.update(time, arrowKeys);
-      display.syncState(state);
+      if (!arrowKeys["Escape"]) {
+        state = state.update(time, arrowKeys);
+        display.syncState(state);
+      }
       if (state.status === "playing") return true;
       else if (ending > 0) {
         ending -= time;
@@ -21,6 +31,8 @@ function runLevel(level) {
       } else {
         display.clear();
         resolve(state.status);
+        window.removeEventListener("keydown", trackEsc);
+        arrowKeys.unRegistered();
         return false;
       }
     });
