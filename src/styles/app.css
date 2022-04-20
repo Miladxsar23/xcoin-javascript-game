@@ -46,3 +46,7 @@ div#root {
   align-items: center;
   min-height: 100vh;
 }
+/* monster */
+.monster {
+  background-color: green;
+}
