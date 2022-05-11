@@ -51,5 +51,11 @@ function overlap(actor1, actor2) {
     actor1.pos.y < actor2.pos.y + actor2.size.y
   );
 }
+// fliphorizintally for canvas display
+function flipHorizontally(context, around) {
+  context.translate(around, 0);
+  context.scale(-1, 1);
+  context.translate(-around, 0);
+}
 
-export { elt, drawGrid, drawActors, scale, overlap };
+export { elt, drawGrid, drawActors, scale, overlap, flipHorizontally };

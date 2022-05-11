@@ -19,6 +19,12 @@ module.exports = {
           "postcss-loader",
         ],
       },
+      {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: "url-loader",
+        },
+      },
     ],
   },
   plugins: [].concat(devMode ? [] : [new MiniCssExtractPlugin()]),

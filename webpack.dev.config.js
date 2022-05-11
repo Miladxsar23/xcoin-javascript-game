@@ -28,6 +28,12 @@ module.exports = {
     rules: [
       { test: /\.jsx?$/, use: ["react-hot-loader/webpack"] },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: "url-loader",
+        },
+      },
     ],
   },
 };
